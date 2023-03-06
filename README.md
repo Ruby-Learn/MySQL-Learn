@@ -12,14 +12,14 @@
 - 여러 트랜잭션이 동시에 처리될 때 특정 트랜잭션이 다른 트랜잭션에서 변경하거나 조회하는 데이터를 볼 수 있게
 허용하지 말지를 결정하는 것  
 ![img.png](img/isolation-level.png)  
-- READ UNCOMMITTED
+- READ UNCOMMITTED  
   ![img_1.png](img/read-uncommitted.png)  
   - 각 트랜잭션에서의 변경 내용이 커밋이나 롤백 여부에 상관없이 다른 트랜잭션에서 보이는 격리수준
   - Dirty Read 가 허용되는 격리수준
     - Dirty Read
       - 어떤 트랜잭션에서 처리한 작업이 완료되지 않았음에도 다른 트랜잭션에서 볼 수 있는 현상
   - 결정되지 않은 상태의 데이터가 다른 트랜잭션에서 보이기 때문에 정합성에 문제가 많아 잘 사용되지 않는 격리수준
-- READ COMMITTED
+- READ COMMITTED  
   ![img.png](img/read-commited.png)  
   - 각 트랜잭션에서 커밋이 완료된 데이터만 다른 트랜잭션에서 보이는 격리수준
   - 오라클에서 기본으로 사용되는 격리수준
@@ -27,7 +27,7 @@
     - 어떤 트랜잭션에서 작업을 커밋하여 변경하였을 때, 다른 트랜잭션에서는 커밋 전 조회, 커밋 후 조회를 통해
     각기 다른 상태를 조회하는 상황이 발생할 수 있다. 이는 하나의 트랜잭션에서 SELECT 쿼리를 실행했을 때 항상
     같은 결과를 가져와야 한다는 REPEATABLE READ 정합성에 어긋난다.
-- REPEATABLE READ
+- REPEATABLE READ  
   ![img.png](img/repeatable-read.png)  
   - MySQL 의 InnoDB 스토리지 엔진에서 기본으로 사용되는 격리수준
   - NON-REPEATABLE READ 부정합이 발생하지 않음
@@ -37,7 +37,7 @@
   트랜잭션을 정상적으로 종료하지 않는다면 백업 데이터가 쌓여 성능에 문제가 될 수 있다.
   - PHANTOM READ(PHANTOM ROW) 로 인한 부정합이 발생할 수 있다.
     - PHANTOM READ
-      - 다른 트랜잭션에서 수행한 변경 작업에 의해 레코드가 보였다 안 보였다 하는 현상
+      - 다른 트랜잭션에서 수행한 변경 작업에 의해 레코드가 보였다 안 보였다 하는 현상  
         ![img.png](phantom-read.png)  
         *그림에서 emp_no 500001 데이터는 변경된 것이 아닌 새로 추가된 데이터로 Undo 백업 데이터가 
         생성되지 않는다. 때문에, 재조회시 갱신된 테이블에서 조회하여 결과를 가져오고 이는 처음 조회한 결과와 다를 수 있다.*
