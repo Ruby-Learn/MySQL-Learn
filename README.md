@@ -11,7 +11,7 @@
 ### Isolation Level - 트랜잭션의 격리수준
 - 여러 트랜잭션이 동시에 처리될 때 특정 트랜잭션이 다른 트랜잭션에서 변경하거나 조회하는 데이터를 볼 수 있게
 허용하지 말지를 결정하는 것  
-![img.png](img/isolation-level.png)
+![img.png](img/isolation-level.png)  
 - READ UNCOMMITTED
   ![img_1.png](img/read-uncommitted.png)  
   - 각 트랜잭션에서의 변경 내용이 커밋이나 롤백 여부에 상관없이 다른 트랜잭션에서 보이는 격리수준
